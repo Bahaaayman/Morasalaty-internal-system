@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مراسلاتي - منصة الدعم الفني</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">مراسلاتي</div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="active">الرئيسية</a>
+                <a href="clients.html">العملاء</a>
+                <a href="admin.html">إدارة</a>
+                <a href="videos.html">الفيديوهات التعليمية</a>
+                <div class="auth-buttons">
+                    <a href="login.html" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        تسجيل دخول
+                    </a>
+                    <div class="user-profile-dropdown" id="userProfile" style="display: none;">
+                        <button class="profile-toggle">
+                            <i class="fas fa-user"></i>
+                            <span id="userName"></span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-header">
+                                <i class="fas fa-circle status-icon"></i>
+                                <span>نشط</span>
+                            </div>
+                            <a href="profile.html" class="dropdown-item">
+                                <i class="fas fa-id-card"></i>
+                                إعدادات حسابي
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i>
+                                الإعدادات
+                            </a>
+                            <a href="#" onclick="logout()" class="dropdown-item text-danger">
+                                <i class="fas fa-sign-out-alt"></i>
+                                تسجيل خروج
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="home-main">
+        <section class="hero-section">
+            <h1>منصة الدعم الفني لفريق مرسلاتي</h1>
+            <p>إدارة العملاء وتقديم الدعم الفني بكفاءة عالية</p>
+            <div class="hero-buttons">
+                <a href="clients.html" class="btn-primary">إدارة العملاء</a>
+                <a href="videos.html" class="btn-secondary">الفيديوهات التعليمية</a>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <h2>مميزات المنصة</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>قاعدة البيانات لفريق الدعم</h3>
+                    <p>تمكنك من إدارة قاعدة البيانات لفريق الدعم الفني</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>فيديوهات تعليمية</h3>
+                    <p>مكتبة سلسلة من الفيديوهات التعليمية لحل المشكلات الشائعة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>إدارة العملاء</h3>
+                    <p>تنظيم بيانات العملاء ومتابعة طلبات الدعم الفني</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © 2024 - منصة مرسلاتي للدعم الفني</p>
+    </footer>
+
+    <script src="./js/auth.js"></script>
+</body>
+</html> 

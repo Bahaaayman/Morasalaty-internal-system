@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف الشخصي - مراسلاتي</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        // Check authentication before page loads
+        if (!localStorage.getItem('isLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">مراسلاتي</div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="clients.html">العملاء</a>
+                <a href="videos.html">الفيديوهات التعليمية</a>
+                <div class="auth-buttons">
+                    <a href="login.html" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        تسجيل دخول
+                    </a>
+                    <div class="user-profile-dropdown" id="userProfile" style="display: none;">
+                        <button class="profile-toggle">
+                            <i class="fas fa-user"></i>
+                            <span id="userName"></span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-header">
+                                <i class="fas fa-circle status-icon"></i>
+                                <span>نشط</span>
+                            </div>
+                            <a href="profile.html" class="dropdown-item">
+                                <i class="fas fa-id-card"></i>
+                                إعدادات حسابي
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i>
+                                الإعدادات
+                            </a>
+                            <a href="#" onclick="logout()" class="dropdown-item text-danger">
+                                <i class="fas fa-sign-out-alt"></i>
+                                تسجيل خروج
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container profile-page">
+        <div class="profile-header-banner">
+            <div class="profile-avatar-large">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1 id="profileFullName">اسم الموظف</h1>
+            <p id="profilePosition" class="profile-position">المنصب الوظيفي</p>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-section">
+                <h2>المعلومات الشخصية</h2>
+                <div class="profile-info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-details">
+                            <label>البريد الإلكتروني</label>
+                            <p id="profileEmail">example@email.com</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="info-details">
+                            <label>تاريخ التعيين</label>
+                            <p id="profileHiringDate">2024/01/01</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-umbrella-beach"></i>
+                        </div>
+                        <div class="info-details">
+                            <label>الإجازات السنوية</label>
+                            <p id="profileAnnualLeave">21 يوم</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h2>تقرير الرواتب</h2>
+                <div class="salary-report">
+                    <table class="salary-table">
+                        <thead>
+                            <tr>
+                                <th>الشهر</th>
+                                <th>الراتب الأساسي</th>
+                                <th>البدلات</th>
+                                <th>الخصومات</th>
+                                <th>الصافي</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salaryTableBody">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h2>تغيير كلمة المرور</h2>
+                <form id="changePasswordForm" class="password-form">
+                    <div class="form-group">
+                        <label for="currentPassword">كلمة المرور الحالية</label>
+                        <input type="password" id="currentPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">كلمة المرور الجديدة</label>
+                        <input type="password" id="newPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">تأكيد كلمة المرور الجديدة</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn-primary">تغيير كلمة المرور</button>
+                </form>
+                <div id="passwordMessage" class="message"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © 2024 - منصة مراسلاتي للدعم الفني</p>
+    </footer>
+
+    <script src="./js/auth.js"></script>
+    <script src="./js/profile.js"></script>
+</body>
+</html> 

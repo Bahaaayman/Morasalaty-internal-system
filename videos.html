@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفيديوهات التعليمية - مراسلاتي</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        // Check authentication before page loads
+        if (!localStorage.getItem('isLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">مراسلاتي</div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="clients.html">العملاء</a>
+                <a href="admin.html">إدارة</a>
+                <a href="videos.html" class="active">الفيديوهات التعليمية</a>
+                <div class="auth-buttons">
+                    <a href="login.html" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        تسجيل دخول
+                    </a>
+                    <div class="user-profile-dropdown" id="userProfile" style="display: none;">
+                        <button class="profile-toggle">
+                            <i class="fas fa-user"></i>
+                            <span id="userName"></span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-header">
+                                <i class="fas fa-circle status-icon"></i>
+                                <span>نشط</span>
+                            </div>
+                            <a href="profile.html" class="dropdown-item">
+                                <i class="fas fa-id-card"></i>
+                                إعدادات حسابي
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i>
+                                الإعدادات
+                            </a>
+                            <a href="#" onclick="logout()" class="dropdown-item text-danger">
+                                <i class="fas fa-sign-out-alt"></i>
+                                تسجيل خروج
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="videos-main">
+        <div class="container">
+            <h1>المكتبة التعليمية</h1>
+            
+            <!-- Videos Categories Tabs -->
+            <div class="video-tabs">
+                <button class="tab-btn active" data-tab="customer-training">
+                    <i class="fas fa-graduation-cap"></i>
+                    فيديوهات تدريب للعملاء
+                </button>
+                <button class="tab-btn" data-tab="team-videos">
+                    <i class="fas fa-users-gear"></i>
+                    فيديوهات خاصة بالفريق
+                </button>
+                <button class="tab-btn" data-tab="sub-videos">
+                    <i class="fas fa-folder-tree"></i>
+                    فيديوهات فرعية
+                </button>
+            </div>
+
+            <!-- Customer Training Videos Section -->
+            <section id="customer-training" class="video-section active">
+                <h2>فيديوهات تدريب للعملاء</h2>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube.com/embed/wtzdIrJV3DU" 
+                                title="Morasalaty NEW CRM KPIs" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3>Morasalaty NEW CRM KPIs</h3>
+                            <p>شرح مؤشرات الأداء الرئيسية وكيفية تحليلها في نظام CRM الجديد</p>
+                            <span class="video-duration">22:03</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Videos Section -->
+            <section id="team-videos" class="video-section">
+                <h2>فيديوهات خاصة بالفريق</h2>
+                <div class="video-grid">
+                    <!-- Will be populated later -->
+                </div>
+            </section>
+
+            <!-- Sub Videos Section -->
+            <section id="sub-videos" class="video-section">
+                <h2>فيديوهات فرعية</h2>
+                <div class="video-grid">
+                    <!-- Will be populated later -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © 2024 - منصة مرسلاتي للدعم الفني</p>
+    </footer>
+
+    <script>
+        // Check authentication status on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!localStorage.getItem('isLoggedIn')) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Simple tab switching functionality
+            const tabs = document.querySelectorAll('.tab-btn');
+            const sections = document.querySelectorAll('.video-section');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and sections
+                    tabs.forEach(t => t.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding section
+                    tab.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+    <script src="./js/auth.js"></script>
+</body>
+</html> 
